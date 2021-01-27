@@ -93,7 +93,9 @@ describe("parser", function()
 
    it("parses break correctly", function()
       assert.same({tag = "Break"}, get_node("break"))
+      assert.same({tag = "Continue"}, get_node("continue"))
       assert.same({line = 1, offset = 11, end_offset = 11, msg = "expected '=' near <eof>"}, get_error("break fail"))
+      assert.same({line = 1, offset = 13, end_offset = 13, msg = "expected '=' near <eof>"}, get_error("continue fail"))
    end)
 
    it("parses do end correctly", function()

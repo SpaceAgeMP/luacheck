@@ -86,6 +86,13 @@ describe("linearize", function()
             get_line("while true do function f() break end end"))
       end)
 
+      it("detects continues outside loops", function()
+         assert.same({line = 1, offset = 1, end_offset = 8, msg = "'continue' is not inside a loop"},
+            get_line("continue"))
+         assert.same({line = 1, offset = 28, end_offset = 35, msg = "'continue' is not inside a loop"},
+            get_line("while true do function f() continue end end"))
+      end)
+
       it("detects duplicate labels", function()
          assert.same({line = 2, offset = 10, end_offset = 17, prev_line = 1, prev_offset = 1, prev_end_offset = 8,
             msg = "label 'fail' already defined on line 1"},
