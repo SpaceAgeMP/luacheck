@@ -1,4 +1,4 @@
-#syntax=docker/dockerfile:1.2
+#syntax=docker/dockerfile:1.6
 
 FROM akorn/luarocks:lua5.4-alpine AS builder
 
